@@ -8,6 +8,11 @@ if (!defined('_S_VERSION')) {
 }
 
 /**
+ * Include template functions
+ */
+require get_template_directory() . '/inc/template-functions.php';
+
+/**
  * Sets up theme defaults and registers support for various WordPress features.
  */
 function workcity_theme_setup()
@@ -95,6 +100,14 @@ function workcity_theme_scripts()
         _S_VERSION
     );
     wp_style_add_data('workcity-theme-style', 'rtl', 'replace');
+
+    wp_enqueue_script(
+        'workcity-theme-navigation',
+        get_template_directory_uri() . '/js/navigation.js',
+        [],
+        _S_VERSION,
+        true
+    );
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
