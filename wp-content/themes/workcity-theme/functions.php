@@ -93,10 +93,18 @@ add_action('widgets_init', 'workcity_theme_widgets_init');
  */
 function workcity_theme_scripts()
 {
+    // Enqueue Google Fonts
+    wp_enqueue_style(
+        'workcity-theme-fonts',
+        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap',
+        [],
+        null
+    );
+
     wp_enqueue_style(
         'workcity-theme-style',
         get_stylesheet_uri(),
-        [],
+        ['workcity-theme-fonts'],
         _S_VERSION
     );
     wp_style_add_data('workcity-theme-style', 'rtl', 'replace');
